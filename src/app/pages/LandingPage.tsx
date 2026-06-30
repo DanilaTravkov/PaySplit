@@ -4,6 +4,7 @@ import { AnimatedCta } from "../components/reactbits/AnimatedCta"
 import { AnimatedHeadline } from "../components/reactbits/AnimatedHeadline"
 import { CountUpStats } from "../components/reactbits/CountUpStats"
 import { HeroMotionField } from "../components/reactbits/HeroMotionField"
+import { MvpSignupSection } from "../components/marketing/MvpSignupSection"
 import { Reveal } from "../components/reactbits/Reveal"
 import { SpotlightCard } from "../components/reactbits/SpotlightCard"
 import { buttonVariants } from "../components/ui/button"
@@ -118,6 +119,8 @@ export function LandingPage() {
           </Reveal>
         </div>
       </section>
+
+      <MvpSignupSection />
 
       <section id="how-it-works" className="px-6 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
