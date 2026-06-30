@@ -9,7 +9,7 @@ type AnimatedHeadlineProps = {
 
 export function AnimatedHeadline({ className }: AnimatedHeadlineProps) {
   return (
-    <h1 className={cn("mb-6 text-5xl font-extrabold leading-[1.1] tracking-tight text-white md:text-7xl", className)}>
+    <h1 className={cn("mb-5 text-[2.85rem] font-extrabold leading-[1.02] tracking-tight text-white sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1]", className)}>
       <SplitText
         text="Stop paying big bills"
         tag="span"
@@ -20,7 +20,7 @@ export function AnimatedHeadline({ className }: AnimatedHeadlineProps) {
         className="inline-block"
       />
       <br />
-      <span className="relative inline-block">
+      <span className="relative mt-1 inline-block md:mt-0">
         <SplitText
           text="all at once."
           tag="span"

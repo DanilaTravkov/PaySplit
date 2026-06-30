@@ -75,11 +75,11 @@ const faqs = [
 export function LandingPage() {
   return (
     <div className="flex flex-col">
-      <section className="relative min-h-[92vh] flex items-center justify-center px-6 overflow-hidden">
+      <section className="relative flex items-start justify-center overflow-hidden px-4 pb-6 pt-5 sm:px-6 md:min-h-[92vh] md:items-center md:px-6 md:py-0">
         <HeroMotionField />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <Reveal className="animated-pill inline-flex items-center gap-2 rounded-full border border-teal-400/25 bg-teal-400/10 px-4 py-1.5 text-sm text-teal-200 mb-8">
+        <div className="relative z-10 mx-auto w-full max-w-4xl text-center">
+          <Reveal className="animated-pill mb-6 inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-teal-400/25 bg-teal-400/10 px-4 py-1.5 text-sm text-teal-200 md:mb-8">
             {/* <span className="flex h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse" /> */}
             Now supporting 50+ subscription services
           </Reveal>
@@ -87,13 +87,13 @@ export function LandingPage() {
           <AnimatedHeadline />
 
           <Reveal delayMs={240}>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
+            <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:mb-10">
               PaySplit turns annual subscription costs into small, predictable payments - so renewal day is never a surprise again.
             </p>
           </Reveal>
 
           <Reveal delayMs={360}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row md:mb-16">
               <Link
                 href="/dashboard"
                 className={cn(
@@ -119,7 +119,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="py-28 px-6">
+      <section id="how-it-works" className="px-6 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <Reveal className="text-center mb-16">
             <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">How it works</p>
