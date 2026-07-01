@@ -1,0 +1,1 @@
+id,user_id,type,stripe_payment_method_id,display_name,brand,last4,exp_month,exp_year,billing_name,is_default,metadata,created_at,updated_at
