@@ -33,7 +33,7 @@ export function AddSubscriptionPage() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">New Subscription</h1>
-        <p className="text-muted-foreground text-sm mt-1">Set up a savings plan for an upcoming annual renewal.</p>
+        <p className="text-muted-foreground text-sm mt-1">Set up a tracked plan for an upcoming annual renewal.</p>
       </div>
 
       <div className="grid gap-5">
@@ -73,8 +73,8 @@ export function AddSubscriptionPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Payment Plan</CardTitle>
-            <CardDescription>Choose how to split the cost into installments.</CardDescription>
+            <CardTitle>Planning Schedule</CardTitle>
+            <CardDescription>Choose how to track the renewal cost across installments.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-5">
             <div className="space-y-2">
@@ -98,21 +98,21 @@ export function AddSubscriptionPage() {
                   <Calculator className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground mb-1">Your installment</p>
+                  <p className="text-xs text-muted-foreground mb-1">Your tracked installment</p>
                   <div className="text-3xl font-bold text-foreground">
                     {formatCurrency(installmentAmount)}
                     <span className="text-base font-normal text-muted-foreground ml-1">/ {frequency}</span>
                   </div>
                   <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1.5">
                     <Zap className="h-3 w-3 text-primary" />
-                    Auto-collected from your funding source each period.
+                    Used as a planning checkpoint. SplitSub does not hold renewal funds.
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="payment">Funding Source</Label>
+              <Label htmlFor="payment">Payment Method</Label>
               <Select id="payment" className="bg-input-background border-border text-foreground">
                 <option value="pm_1">Personal Visa ···· 4242</option>
                 <option value="pm_2">PayPal Account</option>

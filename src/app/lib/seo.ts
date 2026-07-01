@@ -1,17 +1,33 @@
+import type { Metadata } from "next";
+import { APP_NAME, PRODUCT_COPY } from "./constants";
+
 export const siteConfig = {
-  name: "PaySplit",
+  name: APP_NAME,
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  title: "PaySplit | Split Annual Subscription Bills Into Predictable Payments",
-  description:
-    "PaySplit helps professionals and small teams turn annual software subscription renewals into predictable weekly, monthly, or quarterly installments.",
+  title: `${APP_NAME} | Split Annual Subscription Bills Into Predictable Plans`,
+  description: PRODUCT_COPY.longDescription,
   keywords: [
     "subscription budgeting",
-    "annual subscription payments",
+    "annual subscription planning",
     "fintech SaaS",
     "cash flow management",
-    "installment payments",
+    "tracked renewal plans",
     "software renewal planning",
   ],
+};
+
+export const privateAppMetadata: Metadata = {
+  title: "App",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
 };
 
 export function absoluteUrl(path = "/") {

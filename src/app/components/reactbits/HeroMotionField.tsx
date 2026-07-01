@@ -71,7 +71,7 @@ export function HeroMotionField() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       <div className="absolute inset-0 opacity-55">
         <Aurora
-          colorStops={["#14b8a6", "#38bdf8", "#f59e0b"]}
+          colorStops={["#14b8a6", "#22d3ee", "#8b5cf6"]}
           amplitude={1.15}
           blend={0.42}
           speed={0.7}
@@ -87,7 +87,7 @@ export function HeroMotionField() {
       <div className="ambient-glow glow-one" />
       <div className="ambient-glow glow-two" />
       <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,11,13,0.05)_0%,rgba(6,11,13,0.38)_50%,#060b0d_92%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,8,15,0.05)_0%,rgba(5,8,15,0.38)_50%,#05080f_92%)]"
       />
     </div>
   )

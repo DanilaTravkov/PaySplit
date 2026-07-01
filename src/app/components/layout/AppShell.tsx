@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { CreditCard, LayoutDashboard, Settings, Plus, Menu, X, Bell } from "lucide-react"
 import { LogoMark } from "../brand/LogoMark"
+import { APP_NAME } from "../../lib/constants"
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
@@ -34,7 +35,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="flex h-16 items-center justify-between px-5 border-b border-sidebar-border">
           <div className="flex items-center gap-2.5">
             <LogoMark />
-            <span className="text-base font-bold tracking-tight text-foreground">PaySplit</span>
+            <span className="text-base font-bold tracking-tight text-foreground">{APP_NAME}</span>
           </div>
           <button
             className="md:hidden text-muted-foreground hover:text-foreground"
@@ -84,7 +85,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         {/* User section at bottom */}
         <div className="p-4 border-t border-sidebar-border">
           <div className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-accent cursor-pointer transition-colors">
-            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-teal-500 to-cyan-700 flex items-center justify-center text-white text-xs font-bold shrink-0">
+            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-teal-500 to-violet-700 flex items-center justify-center text-white text-xs font-bold shrink-0">
               JD
             </div>
             <div className="min-w-0">
@@ -110,7 +111,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Bell className="h-4 w-4" />
               <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-primary"></span>
             </button>
-            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-teal-500 to-cyan-700 flex items-center justify-center text-white text-xs font-bold cursor-pointer">
+            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-teal-500 to-violet-700 flex items-center justify-center text-white text-xs font-bold cursor-pointer">
               JD
             </div>
           </div>

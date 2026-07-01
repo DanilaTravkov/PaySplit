@@ -8,11 +8,12 @@ import { MvpSignupSection } from "../components/marketing/MvpSignupSection"
 import { Reveal } from "../components/reactbits/Reveal"
 import { SpotlightCard } from "../components/reactbits/SpotlightCard"
 import { buttonVariants } from "../components/ui/button"
+import { APP_NAME, DEFAULT_CURRENCY, NON_CUSTODIAL_DISCLOSURE, PRODUCT_COPY } from "../lib/constants"
 import { cn } from "../lib/utils"
 
 const stats = [
   { value: "Coming soon", numericValue: 0, suffix: "+", label: "Active users" },
-  { value: "Coming soon", numericValue: 0, prefix: "EUR ", suffix: "M", compact: true, label: "Saved this year" },
+  { value: "Coming soon", numericValue: 0, prefix: `${DEFAULT_CURRENCY} `, suffix: "M", compact: true, label: "Tracked this year" },
   { value: "50+", numericValue: 50, suffix: "+", label: "Services supported" },
 ]
 
@@ -21,15 +22,15 @@ const features = [
     icon: Wallet,
     title: "The problem",
     step: "01",
-    description: "You need a tool that demands EUR 300 upfront. A brutal cash-flow hit that forces tough choices.",
-    color: "text-amber-300",
-    bg: "bg-amber-500/10",
+    description: `Let's say you need a tool that demands ${DEFAULT_CURRENCY} 30 monthly, but offers a discount for annual payments, for example ${DEFAULT_CURRENCY} 300.`,
+    color: "text-cyan-300",
+    bg: "bg-cyan-500/10",
   },
   {
     icon: RefreshCw,
-    title: "PaySplit steps in",
+    title: `${APP_NAME} steps in`,
     step: "02",
-    description: "We split that EUR 300 into 12 predictable payments of EUR 25/month for the second subscription check.",
+    description: `We map that ${DEFAULT_CURRENCY} 300 renewal into 12 predictable tracked installments of ${DEFAULT_CURRENCY} 25/month.`,
     color: "text-teal-300",
     bg: "bg-teal-500/10",
   },
@@ -37,7 +38,7 @@ const features = [
     icon: CheckCircle2,
     title: "Renewal day",
     step: "03",
-    description: "When the bill drops, your PaySplit plan has you ready. Choose your own payment plans, we'll take care of the rest.",
+    description: `When the bill drops, ${APP_NAME} takes your saved funds and makes the payment for you, saving you ${DEFAULT_CURRENCY} 60 every year.`,
     color: "text-emerald-400",
     bg: "bg-emerald-500/10",
   },
@@ -57,19 +58,19 @@ const pricingPoints = [
 
 const faqs = [
   {
-    question: "What does PaySplit do?",
+    question: `What does ${APP_NAME} do?`,
     answer:
-      "PaySplit helps users save toward regular subscription renewals through predictable installments and subscribe to notification about your payments",
+      `${APP_NAME} helps users track planned reserves for regular subscription renewals through predictable installments and reminders. It does not hold user funds.`,
   },
   {
-    question: "Who is PaySplit for?",
+    question: `Who is ${APP_NAME} for?`,
     answer:
-      "PaySplit is designed for professionals, freelancers, and small teams that want smoother cash flow around regular subscription renewals.",
+      `${APP_NAME} is designed for professionals, freelancers, and small teams that want smoother cash flow around regular subscription renewals.`,
   },
     {
     question: "Can I choose my own payment plan?",
     answer:
-      "Yes, Paysplit allows you to choose when and how often payments will be made, for example you could split your monthly payment into weekly or daily payments, or weekly payment into daily payments.",
+      `${APP_NAME} lets you choose how often you track installments, for example splitting a monthly target into weekly or daily checkpoints.`,
   },
 ]
 
@@ -80,8 +81,8 @@ export function LandingPage() {
         <HeroMotionField />
 
         <div className="relative z-10 mx-auto w-full max-w-4xl text-center">
-          <Reveal className="animated-pill mb-6 inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-teal-400/25 bg-teal-400/10 px-4 py-1.5 text-sm text-teal-200 md:mb-8">
-            {/* <span className="flex h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse" /> */}
+          <Reveal className="animated-pill mb-6 inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-400/10 px-4 py-1.5 text-sm text-cyan-100 md:mb-8">
+            {/* <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" /> */}
             Now supporting 50+ subscription services
           </Reveal>
 
@@ -89,7 +90,7 @@ export function LandingPage() {
 
           <Reveal delayMs={240}>
             <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:mb-10">
-              PaySplit turns annual subscription costs into small, predictable payments - so renewal day is never a surprise again.
+              {APP_NAME} turns annual subscription costs into small, predictable tracked plans - so renewal day is never a surprise again.
             </p>
           </Reveal>
 
@@ -122,15 +123,17 @@ export function LandingPage() {
 
       <MvpSignupSection />
 
-      <section id="how-it-works" className="px-6 py-20 md:py-28">
-        <div className="mx-auto max-w-6xl">
+      <section id="how-it-works" className="relative overflow-hidden px-6 py-20 md:py-28">
+        <div className="finance-grid absolute inset-0" aria-hidden="true" />
+        <div className="section-grid-vignette absolute inset-0" aria-hidden="true" />
+        <div className="relative z-10 mx-auto max-w-6xl">
           <Reveal className="text-center mb-16">
             <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">How it works</p>
             <h2 className="text-4xl font-bold tracking-tight text-white mb-4">
               Three steps to manage your heavy subscriptions.
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              No more cash-flow shocks. PaySplit handles the math so you can focus on what you build.
+              No more cash-flow shocks. {APP_NAME} handles the math so you can focus on what you build.
             </p>
           </Reveal>
 
@@ -160,13 +163,13 @@ export function LandingPage() {
       <section className="py-24 px-6 border-y border-border">
         <div className="mx-auto max-w-5xl">
           <Reveal>
-            <div className="rounded-2xl bg-gradient-to-br from-teal-500/10 via-cyan-500/5 to-amber-500/5 p-12 text-center">
+            <div className="rounded-2xl bg-gradient-to-br from-cyan-500/10 via-teal-500/5 to-violet-500/5 p-12 text-center">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/15 mx-auto mb-6">
                 <ShieldCheck className="h-7 w-7 text-primary" />
               </div>
               <h2 className="text-3xl font-bold text-white mb-4">Security first.</h2>
               <p className="text-muted-foreground max-w-xl mx-auto mb-10">
-                PaySplit protects payment details and planning data while keeping renewal savings transparent and non-custodial in the MVP.
+                {NON_CUSTODIAL_DISCLOSURE}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 {trustPoints.map((point) => {
@@ -184,8 +187,10 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="pricing" className="py-24 px-6">
-        <div className="mx-auto max-w-4xl">
+      <section id="pricing" className="relative overflow-hidden px-6 py-24">
+        <div className="finance-grid absolute inset-0" aria-hidden="true" />
+        <div className="section-grid-vignette absolute inset-0" aria-hidden="true" />
+        <div className="relative z-10 mx-auto max-w-4xl">
           <Reveal className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">Pricing</p>
             <h2 className="text-4xl font-bold tracking-tight text-white mb-4">
@@ -214,8 +219,8 @@ export function LandingPage() {
                   </ul>
                 </div>
                 <div className="md:text-right">
-                  <p className="text-3xl font-extrabold text-white">EUR 0</p>
-                  <p className="mt-1 text-xs text-muted-foreground">No paid subscription. We only use you card details for actuall split payments.</p>
+                  <p className="text-3xl font-extrabold text-white">{DEFAULT_CURRENCY} 0</p>
+                  <p className="mt-1 text-xs text-muted-foreground">No paid subscription for the MVP. {PRODUCT_COPY.plannedReserveLabel}s are tracked only.</p>
                   <Link
                     href="/dashboard"
                     className={cn(

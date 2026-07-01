@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { AppShell } from "../components/layout/AppShell";
+import { privateAppMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "App",
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
-  },
-};
+export const metadata: Metadata = privateAppMetadata;
 
 export default function PrivateAppLayout({
   children,

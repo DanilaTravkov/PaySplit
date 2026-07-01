@@ -9,24 +9,25 @@ import { Card, CardContent } from "../components/ui/card"
 import { buttonVariants } from "../components/ui/button"
 import { Progress } from "../components/ui/progress"
 import { Badge } from "../components/ui/badge"
+import { PRODUCT_COPY } from "../lib/constants"
 import { cn } from "../lib/utils"
 
 const statCards = (stats: typeof MOCK_DASHBOARD_STATS) => [
   {
-    label: "Total Saved",
+    label: PRODUCT_COPY.trackedBalanceLabel,
     value: formatCurrency(stats.totalSaved),
     icon: TrendingUp,
     iconBg: "bg-emerald-500/15",
     iconColor: "text-emerald-400",
-    change: "+€48 this month",
+    change: "+EUR 48 tracked this month",
     changeColor: "text-emerald-400",
   },
   {
     label: "Monthly Commitment",
     value: formatCurrency(stats.monthlyCommitment),
     icon: CreditCard,
-    iconBg: "bg-teal-500/15",
-    iconColor: "text-teal-300",
+    iconBg: "bg-cyan-500/15",
+    iconColor: "text-cyan-300",
     change: "4 active plans",
     changeColor: "text-muted-foreground",
   },
@@ -34,17 +35,17 @@ const statCards = (stats: typeof MOCK_DASHBOARD_STATS) => [
     label: "Upcoming Renewals",
     value: formatCurrency(stats.upcomingAnnualPayments),
     icon: Calendar,
-    iconBg: "bg-amber-500/15",
-    iconColor: "text-amber-400",
+    iconBg: "bg-sky-500/15",
+    iconColor: "text-sky-300",
     change: "Next: Aug 1, 2026",
-    changeColor: "text-amber-400",
+    changeColor: "text-sky-300",
   },
   {
     label: "Active Plans",
     value: String(stats.activeSubscriptions),
     icon: Layers,
-    iconBg: "bg-cyan-500/15",
-    iconColor: "text-cyan-300",
+    iconBg: "bg-violet-500/15",
+    iconColor: "text-violet-300",
     change: "All configured",
     changeColor: "text-muted-foreground",
   },
@@ -82,7 +83,7 @@ export function DashboardPage() {
           <div>
             <h4 className="text-sm font-semibold text-red-300">Action Required</h4>
             <p className="text-sm text-red-400/80 mt-0.5">
-              {behindSubscriptions.length} subscription(s) are falling behind schedule. Consider adding funds to stay on track.
+              {behindSubscriptions.length} subscription(s) are falling behind schedule. Update your tracked plan to stay on track.
             </p>
           </div>
         </div>
@@ -147,7 +148,7 @@ export function DashboardPage() {
                     <div>
                       <div className="flex justify-between text-xs mb-2">
                         <span className="text-muted-foreground">
-                          {formatCurrency(sub.savedAmount)} saved
+                          {formatCurrency(sub.savedAmount)} tracked
                         </span>
                         <span className="font-medium text-foreground">
                           {Math.round(progress)}% · goal {formatCurrency(sub.annualPrice)}

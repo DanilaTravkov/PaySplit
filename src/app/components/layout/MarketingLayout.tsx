@@ -2,16 +2,17 @@ import type { ReactNode } from "react"
 import Link from "next/link"
 import { LogoMark } from "../brand/LogoMark"
 import { buttonVariants } from "../ui/button"
+import { APP_LEGAL_NAME, APP_NAME } from "../../lib/constants"
 import { cn } from "../../lib/utils"
 
 export function MarketingLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/50 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2.5">
             <LogoMark />
-            <span className="text-base font-bold tracking-tight text-foreground">PaySplit</span>
+            <span className="text-base font-bold tracking-tight text-foreground">{APP_NAME}</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -51,10 +52,10 @@ export function MarketingLayout({ children }: { children: ReactNode }) {
         <div className="mx-auto max-w-6xl px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2.5">
             <LogoMark className="h-7 w-7" />
-            <span className="font-semibold text-foreground">PaySplit</span>
+            <span className="font-semibold text-foreground">{APP_NAME}</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            Copyright {new Date().getFullYear()} PaySplit. All rights reserved.
+            Copyright {new Date().getFullYear()} {APP_LEGAL_NAME}. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
@@ -66,4 +67,3 @@ export function MarketingLayout({ children }: { children: ReactNode }) {
     </div>
   )
 }
-

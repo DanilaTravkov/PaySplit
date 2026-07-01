@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MarketingLayout } from "./components/layout/MarketingLayout";
 import { LandingPage } from "./pages/LandingPage";
 import { absoluteUrl, siteConfig } from "./lib/seo";
+import { DEFAULT_CURRENCY, PRODUCT_COPY } from "./lib/constants";
 
 export const metadata: Metadata = {
   title: "Split Annual Subscription Bills Into Predictable Payments",
@@ -30,7 +31,7 @@ const jsonLd = [
     offers: {
       "@type": "Offer",
       price: "0",
-      priceCurrency: "EUR",
+      priceCurrency: DEFAULT_CURRENCY,
     },
   },
   {
@@ -39,18 +40,18 @@ const jsonLd = [
     mainEntity: [
       {
         "@type": "Question",
-        name: "What does PaySplit do?",
+        name: `What does ${siteConfig.name} do?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "PaySplit helps users save toward annual software subscription renewals through predictable installments.",
+          text: `${siteConfig.name} helps users track planned reserves for annual software subscription renewals through predictable installments.`,
         },
       },
       {
         "@type": "Question",
-        name: "Who is PaySplit for?",
+        name: `Who is ${siteConfig.name} for?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: "PaySplit is designed for professionals, freelancers, and small teams that want smoother cash flow around annual subscription renewals.",
+          text: PRODUCT_COPY.longDescription,
         },
       },
     ],

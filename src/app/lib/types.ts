@@ -1,4 +1,5 @@
 export type Currency = "EUR" | "USD" | "GBP";
+export type MoneyMinorUnit = number;
 export type InstallmentFrequency = "weekly" | "monthly" | "quarterly";
 export type PaymentMethodType = "card" | "paypal" | "crypto" | "bank_transfer";
 export type SubscriptionStatus = "on_track" | "behind" | "funded";
