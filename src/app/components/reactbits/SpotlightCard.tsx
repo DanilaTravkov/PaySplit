@@ -12,7 +12,7 @@ type SpotlightCardProps = {
 export function SpotlightCard({ children, className }: SpotlightCardProps) {
   return (
     <ReactBitsSpotlightCard
-      spotlightColor="rgba(20, 184, 166, 0.22)"
+      spotlightColor="rgba(34, 211, 238, 0.18)"
       className={cn(
         "animated-spotlight-card rounded-2xl border-white/10 !bg-transparent p-8 backdrop-blur-[2px]",
         className

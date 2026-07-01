@@ -5,14 +5,14 @@ import { ArrowRight, CheckCircle2, Users } from "lucide-react"
 import CountUp from "../CountUp"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
+import { APP_NAME, MVP_ACCESS_COUNT } from "../../lib/constants"
 
-const BASE_TESTER_COUNT = 184
-const STORAGE_KEY = "paysplit:mvp-tester-signup"
+const STORAGE_KEY = "splitsub:mvp-tester-signup"
 
 export function MvpSignupSection() {
   const [email, setEmail] = useState("")
   const [isJoined, setIsJoined] = useState(false)
-  const [testerCount, setTesterCount] = useState(BASE_TESTER_COUNT)
+  const [testerCount, setTesterCount] = useState(MVP_ACCESS_COUNT)
   const [error, setError] = useState("")
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export function MvpSignupSection() {
     if (storedSignup) {
       setIsJoined(true)
       setEmail(storedSignup)
-      setTesterCount(BASE_TESTER_COUNT + 1)
+      setTesterCount(MVP_ACCESS_COUNT + 1)
     }
   }, [])
 
@@ -36,7 +36,7 @@ export function MvpSignupSection() {
 
     window.localStorage.setItem(STORAGE_KEY, trimmedEmail)
     setIsJoined(true)
-    setTesterCount(BASE_TESTER_COUNT + 1)
+    setTesterCount(MVP_ACCESS_COUNT + 1)
     setError("")
   }
 
@@ -46,7 +46,7 @@ export function MvpSignupSection() {
         <div>
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">MVP access</p>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-5xl">
-            Test PaySplit before launch.
+            Test {APP_NAME} before launch.
           </h2>
           <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
             Join the tester list and help shape subscription planning before the production release.

@@ -28,7 +28,7 @@ export function AnimatedHeadline({ className }: AnimatedHeadlineProps) {
           delay={80}
           duration={0.8}
           rootMargin="0px"
-          className="hero-gradient-split animated-gradient-text inline-block bg-gradient-to-r from-teal-200 via-cyan-200 to-amber-200 bg-[length:220%_100%] bg-clip-text text-transparent"
+          className="hero-gradient-split animated-gradient-text inline-block bg-gradient-to-r from-cyan-100 via-teal-200 to-violet-200 bg-[length:220%_100%] bg-clip-text text-transparent"
         />
         <span
           aria-hidden="true"

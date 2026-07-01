@@ -1,22 +1,24 @@
 import { InstallmentFrequency } from "./types";
+import { calculateInstallmentAmountMinor, calculateProgressFromMinorUnits, toMinorUnits } from "./money";
 
 export function calculateInstallmentAmount(
   annualPrice: number,
   frequency: InstallmentFrequency
 ): number {
+  const annualPriceMinor = toMinorUnits(annualPrice);
+
   switch (frequency) {
     case "weekly":
-      return annualPrice / 52;
+      return calculateInstallmentAmountMinor(annualPriceMinor, 52) / 100;
     case "monthly":
-      return annualPrice / 12;
+      return calculateInstallmentAmountMinor(annualPriceMinor, 12) / 100;
     case "quarterly":
-      return annualPrice / 4;
+      return calculateInstallmentAmountMinor(annualPriceMinor, 4) / 100;
     default:
-      return annualPrice / 12;
+      return calculateInstallmentAmountMinor(annualPriceMinor, 12) / 100;
   }
 }
 
 export function calculateProgress(savedAmount: number, annualPrice: number): number {
-  if (annualPrice <= 0) return 0;
-  return Math.min(100, Math.max(0, (savedAmount / annualPrice) * 100));
+  return calculateProgressFromMinorUnits(toMinorUnits(savedAmount), toMinorUnits(annualPrice));
 }

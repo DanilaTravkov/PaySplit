@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { PRIVATE_APP_ROUTES } from "./lib/constants";
 import { siteConfig } from "./lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
@@ -7,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/dashboard", "/subscriptions", "/payment-methods", "/settings"],
+        disallow: [...PRIVATE_APP_ROUTES],
       },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,

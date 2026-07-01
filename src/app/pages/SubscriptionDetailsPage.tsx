@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../co
 import { Progress } from "../components/ui/progress"
 import { Badge } from "../components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table"
+import { PRODUCT_COPY } from "../lib/constants"
 
 export function SubscriptionDetailsPage({ subscriptionId }: { subscriptionId: string }) {
   const router = useRouter()
@@ -56,13 +57,13 @@ export function SubscriptionDetailsPage({ subscriptionId }: { subscriptionId: st
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <Card className="md:col-span-2">
           <CardHeader>
-            <CardTitle>Savings Progress</CardTitle>
-            <CardDescription>Track your progress toward the annual goal.</CardDescription>
+            <CardTitle>{PRODUCT_COPY.plannedReserveLabel} Progress</CardTitle>
+            <CardDescription>Track your readiness toward the annual goal. Funds remain outside SplitSub.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex justify-between items-end mb-5">
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Current balance</p>
+                <p className="text-xs text-muted-foreground mb-1">{PRODUCT_COPY.trackedBalanceLabel}</p>
                 <div className="text-4xl font-bold text-foreground">{formatCurrency(subscription.savedAmount)}</div>
               </div>
               <div className="text-right">
@@ -78,7 +79,7 @@ export function SubscriptionDetailsPage({ subscriptionId }: { subscriptionId: st
             />
 
             <div className="flex justify-between text-xs text-muted-foreground mb-2">
-              <span>{Math.round(progress)}% funded</span>
+              <span>{Math.round(progress)}% ready</span>
               <span>{formatCurrency(subscription.annualPrice - subscription.savedAmount)} remaining</span>
             </div>
 
@@ -90,10 +91,10 @@ export function SubscriptionDetailsPage({ subscriptionId }: { subscriptionId: st
                 <div>
                   <h4 className="text-sm font-semibold text-red-300">Slightly behind schedule</h4>
                   <p className="text-sm text-red-400/80 mt-0.5">
-                    A missed payment has put you off track. Make a one-time deposit to catch up.
+                    A missed checkpoint has put you off track. Update your plan to catch up.
                   </p>
                   <Button variant="outline" size="sm" className="mt-3 border-red-500/30 text-red-400 hover:bg-red-500/10">
-                    Make One-time Deposit
+                    Update Plan
                   </Button>
                 </div>
               </div>
@@ -128,7 +129,7 @@ export function SubscriptionDetailsPage({ subscriptionId }: { subscriptionId: st
       <Card>
         <CardHeader>
           <CardTitle>Recent Activity</CardTitle>
-          <CardDescription>Deposit history for this subscription.</CardDescription>
+          <CardDescription>Tracked activity for this subscription.</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
@@ -146,7 +147,7 @@ export function SubscriptionDetailsPage({ subscriptionId }: { subscriptionId: st
                   <TableCell className="text-muted-foreground text-sm">
                     {formatDate(new Date(Date.now() - i * 30 * 24 * 60 * 60 * 1000).toISOString())}
                   </TableCell>
-                  <TableCell className="text-sm">Scheduled Deposit</TableCell>
+                  <TableCell className="text-sm">Scheduled Checkpoint</TableCell>
                   <TableCell>
                     <Badge variant="success">Completed</Badge>
                   </TableCell>

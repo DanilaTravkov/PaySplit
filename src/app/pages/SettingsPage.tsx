@@ -52,7 +52,7 @@ export function SettingsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center gap-4 mb-6">
-                <div className="h-16 w-16 rounded-full bg-gradient-to-br from-teal-500 to-cyan-700 flex items-center justify-center text-white text-xl font-bold shrink-0">
+                <div className="h-16 w-16 rounded-full bg-gradient-to-br from-teal-500 to-violet-700 flex items-center justify-center text-white text-xl font-bold shrink-0">
                   JD
                 </div>
                 <div>
