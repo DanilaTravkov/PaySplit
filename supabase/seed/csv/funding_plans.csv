@@ -1,0 +1,1 @@
+id,user_id,subscription_id,payment_method_id,target_amount_minor,tracked_balance_minor,currency,frequency,installment_amount_minor,starts_on,target_date,status,created_at,updated_at

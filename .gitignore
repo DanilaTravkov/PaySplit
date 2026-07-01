@@ -31,6 +31,8 @@ next-dev*.log
 .turbo/
 .vercel/
 coverage/
+supabase/.branches/
+supabase/.temp/
 
 # TypeScript
 *.tsbuildinfo
