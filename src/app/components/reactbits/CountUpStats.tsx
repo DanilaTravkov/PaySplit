@@ -21,7 +21,7 @@ export function CountUpStats({ stats }: CountUpStatsProps) {
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="animated-stat-tile rounded-xl bg-card px-3 py-4 text-center sm:px-6 sm:py-5"
+          className="animated-stat-tile cursor-default rounded-xl bg-card px-3 py-4 text-center sm:px-6 sm:py-5"
         >
           <div className="mb-1 text-xl font-bold leading-tight text-white sm:mb-0.5 sm:text-2xl">
             {stat.value === "Coming soon" ? (

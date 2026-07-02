@@ -68,11 +68,11 @@ function DraggableFinancePanel({ className, kicker, value, driftSeed }: Draggabl
 
 export function HeroMotionField() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0 opacity-55">
+    <div className="pointer-events-none absolute inset-x-0 -top-16 bottom-0 overflow-hidden" aria-hidden="true">
+      <div className="absolute inset-0 opacity-70">
         <Aurora
-          colorStops={["#14b8a6", "#22d3ee", "#8b5cf6"]}
-          amplitude={1.15}
+          colorStops={["#2dd4bf", "#67e8f9", "#a78bfa"]}
+          amplitude={1.25}
           blend={0.42}
           speed={0.7}
         />

@@ -12,6 +12,9 @@ export const envSchema = [
   { key: "SUPABASE_SECRET_KEY", requiredInProduction: true, public: false },
   { key: "SUPABASE_JWT_KEY_ID", requiredInProduction: true, public: false },
   { key: "SUPABASE_JWKS_URL", requiredInProduction: true, public: false },
+  { key: "RESEND_API_KEY", requiredInProduction: true, public: false },
+  { key: "RESEND_FROM_EMAIL", requiredInProduction: true, public: false },
+  { key: "MVP_NOTIFICATION_TO", requiredInProduction: false, public: false },
   { key: "STRIPE_SECRET_KEY", requiredInProduction: true, public: false },
   { key: "STRIPE_WEBHOOK_SECRET", requiredInProduction: true, public: false },
 ] as const satisfies readonly EnvVar[];

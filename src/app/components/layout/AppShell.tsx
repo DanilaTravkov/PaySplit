@@ -3,13 +3,34 @@
 import React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { CreditCard, LayoutDashboard, Settings, Plus, Menu, X, Bell } from "lucide-react"
+import { CreditCard, LayoutDashboard, Settings, Plus, Menu, X, Bell, LogOut } from "lucide-react"
 import { LogoMark } from "../brand/LogoMark"
 import { APP_NAME } from "../../lib/constants"
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+type AppShellUser = {
+  email: string
+  fullName: string | null
+}
+
+type AppShellProps = {
+  children: React.ReactNode
+  user: AppShellUser
+  signOutAction: (formData: FormData) => void | Promise<void>
+}
+
+function getInitials(user: AppShellUser) {
+  const source = user.fullName || user.email
+  const parts = source.split(/[\s@.]+/).filter(Boolean)
+  const initials = parts.slice(0, 2).map((part) => part.charAt(0).toUpperCase()).join("")
+
+  return initials || "U"
+}
+
+export function AppShell({ children, user, signOutAction }: AppShellProps) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
   const pathname = usePathname()
+  const initials = getInitials(user)
+  const displayName = user.fullName || user.email
 
   const navItems = [
     { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -84,15 +105,24 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         {/* User section at bottom */}
         <div className="p-4 border-t border-sidebar-border">
-          <div className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-accent cursor-pointer transition-colors">
+          <div className="mb-2 flex items-center gap-3 rounded-lg px-3 py-2.5">
             <div className="h-8 w-8 rounded-full bg-gradient-to-br from-teal-500 to-violet-700 flex items-center justify-center text-white text-xs font-bold shrink-0">
-              JD
+              {initials}
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium text-foreground truncate">Jane Doe</p>
-              <p className="text-xs text-muted-foreground truncate">jane@example.com</p>
+              <p className="text-sm font-medium text-foreground truncate">{displayName}</p>
+              <p className="text-xs text-muted-foreground truncate">{user.email}</p>
             </div>
           </div>
+          <form action={signOutAction}>
+            <button
+              type="submit"
+              className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-all hover:bg-accent hover:text-foreground"
+            >
+              <LogOut className="h-4 w-4 shrink-0" />
+              Sign out
+            </button>
+          </form>
         </div>
       </aside>
 
@@ -112,7 +142,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-primary"></span>
             </button>
             <div className="h-9 w-9 rounded-full bg-gradient-to-br from-teal-500 to-violet-700 flex items-center justify-center text-white text-xs font-bold cursor-pointer">
-              JD
+              {initials}
             </div>
           </div>
         </header>

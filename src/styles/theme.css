@@ -343,7 +343,7 @@
   transform-origin: center;
 }
 
-.orbit::before {
+/* .orbit::before {
   content: "";
   position: absolute;
   width: 11px;
@@ -351,7 +351,7 @@
   border-radius: 999px;
   background: rgba(229, 224, 216, 0.58);
   box-shadow: none;
-}
+} */
 
 .orbit-one {
   width: 720px;

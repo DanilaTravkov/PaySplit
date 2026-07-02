@@ -1,7 +1,12 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { PRIVATE_APP_ROUTES } from "../constants";
 import type { Database } from "./database.types";
 import { getSupabaseConfig } from "./config";
+
+function isPrivatePath(pathname: string) {
+  return PRIVATE_APP_ROUTES.some((route) => pathname === route || pathname.startsWith(`${route}/`));
+}
 
 export async function updateSupabaseSession(request: NextRequest) {
   let response = NextResponse.next({
@@ -30,7 +35,20 @@ export async function updateSupabaseSession(request: NextRequest) {
     },
   });
 
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user && isPrivatePath(request.nextUrl.pathname)) {
+    const redirectUrl = request.nextUrl.clone();
+    const next = `${request.nextUrl.pathname}${request.nextUrl.search}`;
+
+    redirectUrl.pathname = "/login";
+    redirectUrl.search = "";
+    redirectUrl.searchParams.set("next", next);
+
+    return NextResponse.redirect(redirectUrl);
+  }
 
   return response;
 }
