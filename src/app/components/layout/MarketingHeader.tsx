@@ -9,6 +9,9 @@ import { cn } from "../../lib/utils";
 
 export function MarketingHeader() {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const mutedLinkClass = hasScrolled
+    ? "text-white/85 hover:text-white"
+    : "text-muted-foreground hover:text-foreground";
 
   useEffect(() => {
     function handleScroll() {
@@ -38,20 +41,20 @@ export function MarketingHeader() {
 
         <nav className="hidden items-center gap-6 md:flex">
           <a
+            href="#pricing"
+            className={cn("text-sm font-medium transition-colors duration-700 ease-out", mutedLinkClass)}
+          >
+            Pricing
+          </a>
+                    <a
             href="#how-it-works"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className={cn("text-sm font-medium transition-colors duration-700 ease-out", mutedLinkClass)}
           >
             How it works
           </a>
           <a
-            href="#pricing"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Pricing
-          </a>
-          <a
             href="#faq"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className={cn("text-sm font-medium transition-colors duration-700 ease-out", mutedLinkClass)}
           >
             FAQ
           </a>
@@ -62,7 +65,8 @@ export function MarketingHeader() {
             href="/login"
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "hidden text-muted-foreground hover:text-foreground sm:inline-flex"
+              "hidden transition-colors duration-700 ease-out sm:inline-flex",
+              mutedLinkClass
             )}
           >
             Log in

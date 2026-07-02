@@ -91,7 +91,7 @@ export function AppShell({ children, user, signOutAction }: AppShellProps) {
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all ${
                     isActive
-                      ? "bg-primary/15 text-primary border border-primary/20"
+                      ? "bg-primary/15 text-primary"
                       : "text-muted-foreground hover:bg-accent hover:text-foreground"
                   }`}
                 >
