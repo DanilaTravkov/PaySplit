@@ -77,7 +77,7 @@ const faqs = [
 export function LandingPage() {
   return (
     <div className="flex flex-col">
-      <section className="relative flex items-start justify-center overflow-hidden px-4 pb-6 pt-5 sm:px-6 md:min-h-[92vh] md:items-center md:px-6 md:py-0">
+      <section className="relative flex items-start justify-center overflow-visible px-4 pb-6 pt-5 sm:px-6 md:min-h-[92vh] md:items-center md:px-6 md:py-0">
         <HeroMotionField />
 
         <div className="relative z-10 mx-auto w-full max-w-4xl text-center">
@@ -97,7 +97,7 @@ export function LandingPage() {
           <Reveal delayMs={360}>
             <div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row md:mb-16">
               <Link
-                href="/dashboard"
+                href="/register?next=/dashboard"
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "animated-primary-link h-12 px-8 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/30 w-full sm:w-auto"
@@ -163,7 +163,7 @@ export function LandingPage() {
       <section className="py-24 px-6 border-y border-border">
         <div className="mx-auto max-w-5xl">
           <Reveal>
-            <div className="rounded-2xl bg-gradient-to-br from-cyan-500/10 via-teal-500/5 to-violet-500/5 p-12 text-center">
+            <div className="cursor-default rounded-2xl bg-gradient-to-br from-cyan-500/10 via-teal-500/5 to-violet-500/5 p-12 text-center">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/15 mx-auto mb-6">
                 <ShieldCheck className="h-7 w-7 text-primary" />
               </div>
@@ -222,7 +222,7 @@ export function LandingPage() {
                   <p className="text-3xl font-extrabold text-white">{DEFAULT_CURRENCY} 0</p>
                   <p className="mt-1 text-xs text-muted-foreground">No paid subscription for the MVP. {PRODUCT_COPY.plannedReserveLabel}s are tracked only.</p>
                   <Link
-                    href="/dashboard"
+                    href="/register?next=/dashboard"
                     className={cn(
                       buttonVariants(),
                       "animated-primary-link mt-6 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/30"
@@ -249,7 +249,7 @@ export function LandingPage() {
           <div className="grid gap-4">
             {faqs.map((faq, index) => (
               <Reveal key={faq.question} delayMs={index * 90}>
-                <div className="rounded-2xl border border-white/10 bg-transparent p-6 backdrop-blur-[2px]">
+                <div className="cursor-default rounded-2xl border border-white/10 bg-transparent p-6 backdrop-blur-[2px]">
                   <h3 className="font-semibold text-white">{faq.question}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
                 </div>
@@ -269,7 +269,7 @@ export function LandingPage() {
             Join thousands of professionals who never stress about annual renewal bills.
           </p>
           <Link
-            href="/dashboard"
+            href="/register?next=/dashboard"
             className={cn(
               buttonVariants({ size: "lg" }),
               "animated-primary-link h-12 px-10 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/30"

@@ -5,7 +5,7 @@ export const APP_LEGAL_NAME = "SplitSub";
 export const DEFAULT_CURRENCY: Currency = "EUR";
 export const DEFAULT_LOCALE = "en-US";
 export const PRIMARY_MARKET = "EU/EEA";
-export const MVP_ACCESS_COUNT = 127;
+export const MVP_ACCESS_COUNT = 0;
 
 export const PUBLIC_ROUTES = ["/"] as const;
 export const PRIVATE_APP_ROUTES = [

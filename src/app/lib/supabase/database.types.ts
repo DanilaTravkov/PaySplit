@@ -394,26 +394,41 @@ export type Database = {
         Row: {
           id: string;
           email: string;
+          status: string;
           user_id: string | null;
+          converted_user_id: string | null;
+          invited_at: string | null;
+          unsubscribed_at: string | null;
           source: string;
           metadata: Json;
           created_at: string;
+          updated_at: string;
         };
         Insert: {
           id?: string;
           email: string;
+          status?: string;
           user_id?: string | null;
+          converted_user_id?: string | null;
+          invited_at?: string | null;
+          unsubscribed_at?: string | null;
           source?: string;
           metadata?: Json;
           created_at?: string;
+          updated_at?: string;
         };
         Update: {
           id?: string;
           email?: string;
+          status?: string;
           user_id?: string | null;
+          converted_user_id?: string | null;
+          invited_at?: string | null;
+          unsubscribed_at?: string | null;
           source?: string;
           metadata?: Json;
           created_at?: string;
+          updated_at?: string;
         };
         Relationships: [];
       };

@@ -14,7 +14,7 @@ export function SpotlightCard({ children, className }: SpotlightCardProps) {
     <ReactBitsSpotlightCard
       spotlightColor="rgba(34, 211, 238, 0.18)"
       className={cn(
-        "animated-spotlight-card rounded-2xl border-white/10 !bg-transparent p-8 backdrop-blur-[2px]",
+        "animated-spotlight-card cursor-default rounded-2xl border-white/10 !bg-transparent p-8 backdrop-blur-[2px]",
         className
       )}
     >

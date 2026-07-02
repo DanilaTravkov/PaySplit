@@ -6,14 +6,17 @@ import CountUp from "../CountUp"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { APP_NAME, MVP_ACCESS_COUNT } from "../../lib/constants"
+import { subscribeToMvpAction } from "./actions"
 
 const STORAGE_KEY = "splitsub:mvp-tester-signup"
 
 export function MvpSignupSection() {
   const [email, setEmail] = useState("")
   const [isJoined, setIsJoined] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [testerCount, setTesterCount] = useState(MVP_ACCESS_COUNT)
   const [error, setError] = useState("")
+  const [message, setMessage] = useState("")
 
   useEffect(() => {
     const storedSignup = window.localStorage.getItem(STORAGE_KEY)
@@ -25,7 +28,7 @@ export function MvpSignupSection() {
     }
   }, [])
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const trimmedEmail = email.trim()
@@ -34,10 +37,28 @@ export function MvpSignupSection() {
       return
     }
 
-    window.localStorage.setItem(STORAGE_KEY, trimmedEmail)
-    setIsJoined(true)
-    setTesterCount(MVP_ACCESS_COUNT + 1)
     setError("")
+    setMessage("")
+    setIsSubmitting(true)
+
+    try {
+      const result = await subscribeToMvpAction(trimmedEmail)
+
+      setTesterCount(result.count)
+
+      if (!result.ok) {
+        setError(result.message)
+        return
+      }
+
+      window.localStorage.setItem(STORAGE_KEY, trimmedEmail)
+      setIsJoined(true)
+      setMessage(result.message)
+    } catch {
+      setError("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -53,7 +74,7 @@ export function MvpSignupSection() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-transparent p-5 backdrop-blur-[2px] md:p-6">
+        <div className="cursor-default rounded-2xl border border-white/10 bg-transparent p-5 backdrop-blur-[2px] md:p-6">
           <div className="mb-5 flex items-center justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -75,17 +96,20 @@ export function MvpSignupSection() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="you@example.com"
-              disabled={isJoined}
+              disabled={isJoined || isSubmitting}
               className="h-12 rounded-xl bg-transparent"
             />
             {error && <p className="text-xs text-destructive">{error}</p>}
+            {message && <p className="text-xs text-primary">{message}</p>}
             <Button
               type="submit"
               size="lg"
-              disabled={isJoined}
+              disabled={isJoined || isSubmitting}
               className="animated-primary-link h-12 w-full bg-primary text-white shadow-xl shadow-primary/25 hover:bg-primary/90"
             >
-              {isJoined ? (
+              {isSubmitting ? (
+                "Joining..."
+              ) : isJoined ? (
                 <>
                   Joined the MVP test
                   <CheckCircle2 className="ml-2 h-4 w-4" />
