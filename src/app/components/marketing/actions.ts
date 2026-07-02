@@ -1,6 +1,7 @@
 "use server";
 
 import { sendMvpWelcomeEmail } from "../../lib/email/resend";
+import { getMvpSignupCount } from "../../lib/mvp-signups";
 import { createSupabaseAdminClient } from "../../lib/supabase/admin";
 
 type MvpSignupResult = {
@@ -19,20 +20,6 @@ function hasSentWelcomeEmail(metadata: unknown) {
   const welcomeEmail = (metadata as { welcome_email?: { status?: string } }).welcome_email;
 
   return welcomeEmail?.status === "sent";
-}
-
-async function getMvpSignupCount() {
-  const supabase = createSupabaseAdminClient();
-  const { count, error } = await supabase
-    .from("mvp_signups")
-    .select("id", { count: "exact", head: true })
-    .neq("status", "unsubscribed");
-
-  if (error) {
-    throw error;
-  }
-
-  return count ?? 0;
 }
 
 async function sendAndRecordWelcomeEmail(email: string) {

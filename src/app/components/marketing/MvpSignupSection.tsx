@@ -5,16 +5,20 @@ import { ArrowRight, CheckCircle2, Users } from "lucide-react"
 import CountUp from "../CountUp"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
-import { APP_NAME, MVP_ACCESS_COUNT } from "../../lib/constants"
+import { APP_NAME } from "../../lib/constants"
 import { subscribeToMvpAction } from "./actions"
 
 const STORAGE_KEY = "splitsub:mvp-tester-signup"
 
-export function MvpSignupSection() {
+type MvpSignupSectionProps = {
+  initialTesterCount: number
+}
+
+export function MvpSignupSection({ initialTesterCount }: MvpSignupSectionProps) {
   const [email, setEmail] = useState("")
   const [isJoined, setIsJoined] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [testerCount, setTesterCount] = useState(MVP_ACCESS_COUNT)
+  const [testerCount, setTesterCount] = useState(initialTesterCount)
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
 
@@ -24,7 +28,6 @@ export function MvpSignupSection() {
     if (storedSignup) {
       setIsJoined(true)
       setEmail(storedSignup)
-      setTesterCount(MVP_ACCESS_COUNT + 1)
     }
   }, [])
 
