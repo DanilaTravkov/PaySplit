@@ -3,6 +3,9 @@ import { MarketingLayout } from "./components/layout/MarketingLayout";
 import { LandingPage } from "./pages/LandingPage";
 import { absoluteUrl, siteConfig } from "./lib/seo";
 import { DEFAULT_CURRENCY, PRODUCT_COPY } from "./lib/constants";
+import { getMvpSignupCount } from "./lib/mvp-signups";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Split Annual Subscription Bills Into Predictable Payments",
@@ -58,14 +61,16 @@ const jsonLd = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const mvpSignupCount = await getMvpSignupCount();
+
   return (
     <MarketingLayout>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <LandingPage />
+      <LandingPage mvpSignupCount={mvpSignupCount} />
     </MarketingLayout>
   );
 }

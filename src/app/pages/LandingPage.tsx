@@ -74,7 +74,11 @@ const faqs = [
   },
 ]
 
-export function LandingPage() {
+type LandingPageProps = {
+  mvpSignupCount: number
+}
+
+export function LandingPage({ mvpSignupCount }: LandingPageProps) {
   return (
     <div className="flex flex-col">
       <section className="relative flex items-start justify-center overflow-visible px-4 pb-6 pt-5 sm:px-6 md:min-h-[92vh] md:items-center md:px-6 md:py-0">
@@ -121,7 +125,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <MvpSignupSection />
+      <MvpSignupSection initialTesterCount={mvpSignupCount} />
 
       <section id="how-it-works" className="relative overflow-hidden px-6 py-20 md:py-28">
         <div className="finance-grid absolute inset-0" aria-hidden="true" />
