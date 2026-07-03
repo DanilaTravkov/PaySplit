@@ -7,6 +7,7 @@ import { LogoMark } from "../../components/brand/LogoMark";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
+import { SubmitButton } from "../../components/ui/submit-button";
 import { APP_NAME } from "../../lib/constants";
 import { getCurrentUser } from "../../lib/supabase/server";
 
@@ -76,17 +77,17 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
           <form action={signInWithGoogleAction}>
             <input type="hidden" name="next" value={next} />
-            <Button
-              type="submit"
+            <SubmitButton
               variant="outline"
               size="lg"
+              pendingText="Opening Google..."
               className="h-11 w-full border-white/10 bg-background/20 text-foreground backdrop-blur-md hover:bg-background/30"
             >
               <span className="mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-bold text-slate-950">
                 G
               </span>
               Continue with Google
-            </Button>
+            </SubmitButton>
           </form>
 
           <div className="my-5 flex items-center gap-3 text-xs uppercase tracking-widest text-muted-foreground">
@@ -122,10 +123,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
               />
             </div>
 
-            <Button type="submit" size="lg" className="h-11 w-full">
+            <SubmitButton size="lg" pendingText="Logging in..." className="h-11 w-full">
               Log in
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            </SubmitButton>
           </form>
 
           <p className="mt-6 text-center text-sm text-muted-foreground">

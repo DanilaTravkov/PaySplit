@@ -2,7 +2,7 @@
 
 Next.js App Router implementation of the PaySplit fintech SaaS MVP.
 
-PaySplit is a non-custodial EU/EEA-first MVP. It tracks planned reserves and renewal readiness for subscription bills, but it does not hold, reserve, or store user funds.
+PaySplit is an EU/EEA-first fintech SaaS MVP for turning annual subscription renewals into smaller installments. The product direction is a virtual piggybank: users add subscriptions and cards, PaySplit collects installments into a regulated stored balance, then pays renewal charges through PaySplit-managed virtual cards. The MVP may launch planning-first while regulated wallet and issuing partners are completed.
 
 ## Running the code
 
