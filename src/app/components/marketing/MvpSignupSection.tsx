@@ -2,7 +2,6 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react"
 import { ArrowRight, Users } from "lucide-react"
-import CountUp from "../CountUp"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { APP_NAME } from "../../lib/constants"
@@ -126,7 +125,7 @@ export function MvpSignupSection({
             Already subscribed
           </p>
           <div className="mt-1 flex items-baseline gap-1 text-4xl font-extrabold text-white">
-            <CountUp key={testerCount} to={testerCount} duration={1.1} separator="," />
+            <span>{testerCount.toLocaleString("en-US")}</span>
             <span className="text-xl text-primary">+</span>
           </div>
         </div>

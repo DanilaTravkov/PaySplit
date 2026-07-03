@@ -122,14 +122,14 @@ export function LandingPage({ mvpSignupCount }: LandingPageProps) {
           <Reveal delayMs={480} threshold={0} className="mb-14 md:mb-0">
             <CountUpStats stats={stats} />
           </Reveal>
-
-          <MvpSignupSection
-            initialTesterCount={mvpSignupCount}
-            variant="compact"
-            className="mx-auto mb-8 block w-full max-w-md md:hidden"
-          />
         </div>
       </section>
+
+      <MvpSignupSection
+        initialTesterCount={mvpSignupCount}
+        variant="compact"
+        className="mx-auto block w-full max-w-md px-4 pb-10 md:hidden"
+      />
 
       <MvpSignupSection initialTesterCount={mvpSignupCount} className="hidden md:block" />
 
