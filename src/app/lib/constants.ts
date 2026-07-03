@@ -16,13 +16,13 @@ export const PRIVATE_APP_ROUTES = [
 ] as const;
 
 export const NON_CUSTODIAL_DISCLOSURE =
-  "PaySplit tracks planned reserves and renewal readiness only. It does not hold, reserve, or store user funds.";
+  "PaySplit is being built to collect installments into a regulated stored balance and pay renewals with PaySplit-managed virtual cards. MVP money movement stays gated until the wallet and issuing partner stack is ready.";
 
 export const PRODUCT_COPY = {
   shortDescription:
-    "PaySplit turns annual subscription renewals into predictable tracked plans.",
+    "PaySplit turns annual subscription renewals into predictable installments.",
   longDescription:
-    "PaySplit helps professionals and small teams turn annual software subscription renewals into predictable weekly, monthly, or quarterly tracked plans.",
-  plannedReserveLabel: "Planned reserve",
-  trackedBalanceLabel: "Tracked balance",
+    "PaySplit helps professionals and small teams turn annual software subscription renewals into weekly, monthly, or quarterly installments that can fund a regulated renewal balance before the bill is due.",
+  plannedReserveLabel: "Renewal balance",
+  trackedBalanceLabel: "Saved toward renewal",
 };

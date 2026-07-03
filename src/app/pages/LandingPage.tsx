@@ -30,7 +30,7 @@ const features = [
     icon: RefreshCw,
     title: `${APP_NAME} steps in`,
     step: "02",
-    description: `We map that ${DEFAULT_CURRENCY} 300 renewal into 12 predictable tracked installments of ${DEFAULT_CURRENCY} 25/month.`,
+    description: `We map that ${DEFAULT_CURRENCY} 300 renewal into 12 predictable installments of ${DEFAULT_CURRENCY} 25/month, designed to build a real renewal balance over time.`,
     color: "text-teal-300",
     bg: "bg-teal-500/10",
   },
@@ -46,21 +46,21 @@ const features = [
 
 const trustPoints = [
   { icon: ShieldCheck, label: "Bank-grade encryption" },
-  { icon: TrendingUp, label: "Non-custodial planning" },
+  { icon: TrendingUp, label: "Regulated balance model" },
   { icon: Users, label: "GDPR compliant" },
 ]
 
 const pricingPoints = [
   "Unlimited tracked subscriptions",
-  "Weekly, monthly, and quarterly installment plans",
-  "Renewal reminders and funding progress",
+  "Weekly, monthly, and quarterly installment planning",
+  "Renewal readiness and funding progress",
 ]
 
 const faqs = [
   {
     question: `What does ${APP_NAME} do?`,
     answer:
-      `${APP_NAME} helps users track planned reserves for regular subscription renewals through predictable installments and reminders. It does not hold user funds.`,
+      `${APP_NAME} is being built as a virtual piggybank for subscription renewals: users split big bills into installments, build a regulated renewal balance, and pay the vendor through a PaySplit-managed virtual card when renewal day arrives. The MVP may launch planning-first while regulated money movement is completed.`,
   },
   {
     question: `Who is ${APP_NAME} for?`,
@@ -230,7 +230,7 @@ export function LandingPage({ mvpSignupCount }: LandingPageProps) {
                 </div>
                 <div className="md:text-right">
                   <p className="text-3xl font-extrabold text-white">{DEFAULT_CURRENCY} 0</p>
-                  <p className="mt-1 text-xs text-muted-foreground">No paid subscription for the MVP. {PRODUCT_COPY.plannedReserveLabel}s are tracked only.</p>
+                  <p className="mt-1 text-xs text-muted-foreground">No paid subscription for the MVP. Money movement turns on only when the regulated wallet and issuing stack is ready.</p>
                   <Link
                     href="/register?next=/dashboard"
                     className={cn(

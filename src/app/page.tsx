@@ -46,7 +46,7 @@ const jsonLd = [
         name: `What does ${siteConfig.name} do?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `${siteConfig.name} helps users track planned reserves for annual software subscription renewals through predictable installments.`,
+          text: `${siteConfig.name} helps users split annual software subscription renewals into predictable installments, with the product direction of building a regulated renewal balance and paying vendors through managed virtual cards.`,
         },
       },
       {

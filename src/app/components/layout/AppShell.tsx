@@ -2,8 +2,9 @@
 
 import React from "react"
 import Link from "next/link"
+import { useFormStatus } from "react-dom"
 import { usePathname } from "next/navigation"
-import { CreditCard, LayoutDashboard, Settings, Plus, Menu, X, Bell, LogOut } from "lucide-react"
+import { CreditCard, LayoutDashboard, Settings, Plus, Menu, X, Bell, LogOut, Loader2 } from "lucide-react"
 import { LogoMark } from "../brand/LogoMark"
 import { APP_NAME } from "../../lib/constants"
 
@@ -24,6 +25,26 @@ function getInitials(user: AppShellUser) {
   const initials = parts.slice(0, 2).map((part) => part.charAt(0).toUpperCase()).join("")
 
   return initials || "U"
+}
+
+function SignOutButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      aria-busy={pending}
+      className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-all hover:bg-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-70"
+    >
+      {pending ? (
+        <Loader2 className="h-4 w-4 shrink-0 animate-spin" />
+      ) : (
+        <LogOut className="h-4 w-4 shrink-0" />
+      )}
+      {pending ? "Signing out..." : "Sign out"}
+    </button>
+  )
 }
 
 export function AppShell({ children, user, signOutAction }: AppShellProps) {
@@ -69,6 +90,7 @@ export function AppShell({ children, user, signOutAction }: AppShellProps) {
         <div className="flex-1 p-4 space-y-6">
           <Link
             href="/subscriptions/new"
+            prefetch
             onClick={() => setSidebarOpen(false)}
             className="flex items-center w-full justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-primary/90 shadow-lg shadow-primary/25"
           >
@@ -88,6 +110,7 @@ export function AppShell({ children, user, signOutAction }: AppShellProps) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all ${
                     isActive
@@ -115,13 +138,7 @@ export function AppShell({ children, user, signOutAction }: AppShellProps) {
             </div>
           </div>
           <form action={signOutAction}>
-            <button
-              type="submit"
-              className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-all hover:bg-accent hover:text-foreground"
-            >
-              <LogOut className="h-4 w-4 shrink-0" />
-              Sign out
-            </button>
+            <SignOutButton />
           </form>
         </div>
       </aside>
