@@ -119,13 +119,19 @@ export function LandingPage({ mvpSignupCount }: LandingPageProps) {
             </div>
           </Reveal>
 
+          <MvpSignupSection
+            initialTesterCount={mvpSignupCount}
+            variant="compact"
+            className="mx-auto mb-8 block w-full max-w-md md:hidden"
+          />
+
           <Reveal delayMs={480} threshold={0}>
             <CountUpStats stats={stats} />
           </Reveal>
         </div>
       </section>
 
-      <MvpSignupSection initialTesterCount={mvpSignupCount} />
+      <MvpSignupSection initialTesterCount={mvpSignupCount} className="hidden md:block" />
 
       <section id="how-it-works" className="relative overflow-hidden px-6 py-20 md:py-28">
         <div className="finance-grid absolute inset-0" aria-hidden="true" />
