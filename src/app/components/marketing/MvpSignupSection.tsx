@@ -29,6 +29,8 @@ export function MvpSignupSection({
   const [testerCount, setTesterCount] = useState(initialTesterCount)
   const [error, setError] = useState("")
   const [showSuccessBurst, setShowSuccessBurst] = useState(false)
+  const hasTriggeredSuccessBurstRef = useRef(false)
+  const submitInFlightRef = useRef(false)
   const successBurstTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
@@ -65,12 +67,17 @@ export function MvpSignupSection({
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
+    if (submitInFlightRef.current || isSubmitting || isJoined) {
+      return
+    }
+
     const trimmedEmail = email.trim()
     if (!trimmedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
       setError("Enter a valid email to join the MVP test.")
       return
     }
 
+    submitInFlightRef.current = true
     setError("")
     setIsSubmitting(true)
 
@@ -91,10 +98,14 @@ export function MvpSignupSection({
 
       window.localStorage.setItem(STORAGE_KEY, trimmedEmail)
       setIsJoined(true)
-      triggerSuccessBurst()
+      if (!hasTriggeredSuccessBurstRef.current) {
+        hasTriggeredSuccessBurstRef.current = true
+        triggerSuccessBurst()
+      }
     } catch {
       setError("Something went wrong. Please try again.")
     } finally {
+      submitInFlightRef.current = false
       setIsSubmitting(false)
     }
   }
@@ -156,7 +167,20 @@ export function MvpSignupSection({
   )
 
   if (variant === "compact") {
-    return <div className={className}>{signupCard}</div>
+    return (
+      <div className={className}>
+        <div className="mb-5 text-left">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">MVP access</p>
+          <h2 className="mb-3 text-3xl font-bold tracking-tight text-white">
+            Test {APP_NAME} before launch.
+          </h2>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Join the tester list and help shape subscription planning before the production release.
+          </p>
+        </div>
+        {signupCard}
+      </div>
+    )
   }
 
   return (
