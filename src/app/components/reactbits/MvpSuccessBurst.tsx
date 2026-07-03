@@ -90,7 +90,7 @@ export function MvpSuccessBurst({ active }: MvpSuccessBurstProps) {
     let height = 0
     let dpr = 1
 
-    function resize() {
+    function syncCanvasSize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2)
       width = window.innerWidth
       height = window.innerHeight
@@ -99,9 +99,29 @@ export function MvpSuccessBurst({ active }: MvpSuccessBurstProps) {
       canvasElement.style.width = `${width}px`
       canvasElement.style.height = `${height}px`
       drawingContext.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
+
+    function resetBurst() {
+      syncCanvasSize()
       particles = createParticles(width, height)
       startTime = performance.now()
       lastTime = startTime
+    }
+
+    function handleResize() {
+      const previousWidth = width
+      const previousHeight = height
+
+      syncCanvasSize()
+
+      const widthChanged = Math.abs(width - previousWidth) > 24
+      const majorHeightChange = Math.abs(height - previousHeight) > Math.max(160, previousHeight * 0.3)
+
+      if (widthChanged || majorHeightChange) {
+        particles = createParticles(width, height)
+        startTime = performance.now()
+        lastTime = startTime
+      }
     }
 
     function drawParticle(particle: Particle, elapsed: number) {
@@ -177,13 +197,13 @@ export function MvpSuccessBurst({ active }: MvpSuccessBurstProps) {
       }
     }
 
-    resize()
-    window.addEventListener("resize", resize)
+    resetBurst()
+    window.addEventListener("resize", handleResize)
     animationFrame = window.requestAnimationFrame(frame)
 
     return () => {
       window.cancelAnimationFrame(animationFrame)
-      window.removeEventListener("resize", resize)
+      window.removeEventListener("resize", handleResize)
       drawingContext.clearRect(0, 0, width, height)
     }
   }, [active])
