@@ -1,4 +1,4 @@
-# Production Plan: SplitSub Fintech SaaS
+# Production Plan: PaySplit Fintech SaaS
 
 Implement the following in a sequential manner, according to user instructions regarding a part of this plan that will be implemented in a branch that the user should provide.
 
@@ -6,12 +6,12 @@ If there's no clear information about what bit of this plan should be implemente
 
 ## Product Direction
 
-- SplitSub's core product is not a reminder-only planner. The product must collect user installments and make annual subscription renewals feel weekly, monthly, or quarterly.
-- The target experience is: user adds a subscription, adds a card, SplitSub charges installments, funds accumulate in a regulated stored balance, and the subscription is paid through a SplitSub-managed virtual card on renewal day.
+- PaySplit's core product is not a reminder-only planner. The product must collect user installments and make annual subscription renewals feel weekly, monthly, or quarterly.
+- The target experience is: user adds a subscription, adds a card, PaySplit charges installments, funds accumulate in a regulated stored balance, and the subscription is paid through a PaySplit-managed virtual card on renewal day.
 - The MVP is card-first. PayPal, crypto, open banking, bank transfers, and other wallets can be added later.
 - Do not use card authorization holds as the money-safe mechanism. Card and PayPal holds are short-window tools and do not solve annual renewal funding.
-- Do not represent customer renewal funds as SplitSub business revenue or hold them casually in SplitSub's own operating bank account. Customer funds require a regulated wallet/EMI/issuing partner or equivalent legal structure.
-- Stripe can be used for card collection, SetupIntents, customer/payment-method management, webhooks, and optional SplitSub SaaS billing. Stored user renewal balances and virtual-card issuance must be modeled through a regulated money/issuing provider abstraction until a partner is selected.
+- Do not represent customer renewal funds as PaySplit business revenue or hold them casually in PaySplit's own operating bank account. Customer funds require a regulated wallet/EMI/issuing partner or equivalent legal structure.
+- Stripe can be used for card collection, SetupIntents, customer/payment-method management, webhooks, and optional PaySplit SaaS billing. Stored user renewal balances and virtual-card issuance must be modeled through a regulated money/issuing provider abstraction until a partner is selected.
 
 ## Architecture Principles
 
@@ -62,7 +62,7 @@ If there's no clear information about what bit of this plan should be implemente
     Integrate the selected issuing provider or a provider adapter stub. Create subscription-specific virtual cards, spending controls, merchant/category limits where supported, freeze/unfreeze flows, and card status sync.
 
 13. `feat/renewal-payment-flow`
-    Route vendor renewal charges through SplitSub-managed virtual cards. Track card authorizations, captures, declines, short-balance handling, user notifications, and renewal completion states.
+    Route vendor renewal charges through PaySplit-managed virtual cards. Track card authorizations, captures, declines, short-balance handling, user notifications, and renewal completion states.
 
 14. `feat/provider-webhooks`
     Add webhook routes for Stripe and money/issuing providers, signature verification, idempotent provider_events storage, setup success/failure handling, charge lifecycle handling, virtual card event handling, and audit logging.
@@ -71,7 +71,7 @@ If there's no clear information about what bit of this plan should be implemente
     Add reconciliation jobs for Stripe payments, wallet balances, virtual card transactions, ledger entries, refunds, disputes, and provider settlement reports.
 
 16. `feat/optional-saas-billing`
-    Add optional SplitSub paid-plan billing via Stripe Checkout/subscriptions. Keep SaaS revenue strictly separate from customer renewal balances.
+    Add optional PaySplit paid-plan billing via Stripe Checkout/subscriptions. Keep SaaS revenue strictly separate from customer renewal balances.
 
 17. `feat/reminders-cron`
     Add Vercel Cron routes for upcoming renewals, failed installment charges, behind-plan alerts, renewal-day events, and expiring payment methods. Store reminder_events.

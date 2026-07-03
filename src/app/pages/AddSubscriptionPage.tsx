@@ -105,7 +105,7 @@ export function AddSubscriptionPage() {
                   </div>
                   <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1.5">
                     <Zap className="h-3 w-3 text-primary" />
-                    Used as a planning checkpoint. SplitSub does not hold renewal funds.
+                    Used as a planning checkpoint. PaySplit does not hold renewal funds.
                   </p>
                 </div>
               </div>

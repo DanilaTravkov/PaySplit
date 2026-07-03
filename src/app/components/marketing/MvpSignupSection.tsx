@@ -10,7 +10,7 @@ import { cn } from "../../lib/utils"
 import { MvpSuccessBurst } from "../reactbits/MvpSuccessBurst"
 import { subscribeToMvpAction } from "./actions"
 
-const STORAGE_KEY = "splitsub:mvp-tester-signup"
+const STORAGE_KEY = "paysplit:mvp-tester-signup"
 
 type MvpSignupSectionProps = {
   initialTesterCount: number

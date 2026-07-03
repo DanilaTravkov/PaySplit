@@ -58,7 +58,7 @@ export function SubscriptionDetailsPage({ subscriptionId }: { subscriptionId: st
         <Card className="md:col-span-2">
           <CardHeader>
             <CardTitle>{PRODUCT_COPY.plannedReserveLabel} Progress</CardTitle>
-            <CardDescription>Track your readiness toward the annual goal. Funds remain outside SplitSub.</CardDescription>
+            <CardDescription>Track your readiness toward the annual goal. Funds remain outside PaySplit.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex justify-between items-end mb-5">

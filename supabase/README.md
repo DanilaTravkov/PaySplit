@@ -1,6 +1,6 @@
 # Supabase Workflow
 
-This folder contains Supabase migrations and generated seed data for the SplitSub MVP.
+This folder contains Supabase migrations and generated seed data for the PaySplit MVP.
 
 The baseline schema creates:
 

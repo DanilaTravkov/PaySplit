@@ -1,8 +1,8 @@
-# SplitSub
+# PaySplit
 
-Next.js App Router implementation of the SplitSub fintech SaaS MVP.
+Next.js App Router implementation of the PaySplit fintech SaaS MVP.
 
-SplitSub is a non-custodial EU/EEA-first MVP. It tracks planned reserves and renewal readiness for subscription bills, but it does not hold, reserve, or store user funds.
+PaySplit is a non-custodial EU/EEA-first MVP. It tracks planned reserves and renewal readiness for subscription bills, but it does not hold, reserve, or store user funds.
 
 ## Running the code
 
