@@ -106,9 +106,7 @@ export async function subscribeToMvpAction(email: string): Promise<MvpSignupResu
       return {
         ok: true,
         count,
-        message: sent
-          ? "You're on the MVP tester list. Check your inbox."
-          : "You're on the MVP list. The confirmation email could not be sent yet.",
+        message: sent ? "MVP signup saved." : "The confirmation email could not be sent yet.",
       };
     }
 
@@ -131,6 +129,6 @@ export async function subscribeToMvpAction(email: string): Promise<MvpSignupResu
   return {
     ok: true,
     count,
-    message: "You're on the MVP tester list. Check your inbox.",
+    message: "MVP signup saved.",
   };
 }
