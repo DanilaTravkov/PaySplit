@@ -93,7 +93,7 @@ export function LandingPage({ mvpSignupCount }: LandingPageProps) {
           <AnimatedHeadline />
 
           <Reveal delayMs={240}>
-            <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:mb-10">
+            <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:mb-5">
               {APP_NAME} turns annual subscription costs into small, predictable tracked plans - so renewal day is never a surprise again.
             </p>
           </Reveal>
@@ -119,21 +119,21 @@ export function LandingPage({ mvpSignupCount }: LandingPageProps) {
             </div>
           </Reveal>
 
+          <Reveal delayMs={480} threshold={0} className="mb-8 md:mb-0">
+            <CountUpStats stats={stats} />
+          </Reveal>
+
           <MvpSignupSection
             initialTesterCount={mvpSignupCount}
             variant="compact"
             className="mx-auto mb-8 block w-full max-w-md md:hidden"
           />
-
-          <Reveal delayMs={480} threshold={0}>
-            <CountUpStats stats={stats} />
-          </Reveal>
         </div>
       </section>
 
       <MvpSignupSection initialTesterCount={mvpSignupCount} className="hidden md:block" />
 
-      <section id="how-it-works" className="relative overflow-hidden px-6 py-20 md:py-28">
+      <section id="how-it-works" className="relative overflow-hidden px-6 py-20 md:py-28 border-y border-border">
         <div className="finance-grid absolute inset-0" aria-hidden="true" />
         <div className="section-grid-vignette absolute inset-0" aria-hidden="true" />
         <div className="relative z-10 mx-auto max-w-6xl">

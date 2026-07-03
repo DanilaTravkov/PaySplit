@@ -9,7 +9,7 @@ type AnimatedHeadlineProps = {
 
 export function AnimatedHeadline({ className }: AnimatedHeadlineProps) {
   return (
-    <h1 className={cn("mb-5 text-[2.85rem] font-extrabold leading-[1.02] tracking-tight text-white sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.1]", className)}>
+    <h1 className={cn("mb-5 text-[2.85rem] font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl md:mb-6 md:text-7xl md:leading-[1.12]", className)}>
       <SplitText
         text="Stop paying big bills"
         tag="span"
@@ -18,6 +18,7 @@ export function AnimatedHeadline({ className }: AnimatedHeadlineProps) {
         duration={0.8}
         rootMargin="0px"
         className="inline-block"
+        clip={false}
       />
       <br />
       <span className="relative mt-1 inline-block md:mt-0">
@@ -29,6 +30,7 @@ export function AnimatedHeadline({ className }: AnimatedHeadlineProps) {
           duration={0.8}
           rootMargin="0px"
           className="hero-gradient-split animated-gradient-text inline-block bg-gradient-to-r from-cyan-100 via-teal-200 to-violet-200 bg-[length:220%_100%] bg-clip-text text-transparent"
+          clip={false}
         />
         <span
           aria-hidden="true"
