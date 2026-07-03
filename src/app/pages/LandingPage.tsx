@@ -30,7 +30,7 @@ const features = [
     icon: RefreshCw,
     title: `${APP_NAME} steps in`,
     step: "02",
-    description: `We map that ${DEFAULT_CURRENCY} 300 renewal into 12 predictable installments of ${DEFAULT_CURRENCY} 25/month, designed to build a real renewal balance over time.`,
+    description: `We map that ${DEFAULT_CURRENCY} 300 renewal into 12 predictable installments of ${DEFAULT_CURRENCY} 25/month, which builds a real balance over time.`,
     color: "text-teal-300",
     bg: "bg-teal-500/10",
   },
@@ -38,7 +38,7 @@ const features = [
     icon: CheckCircle2,
     title: "Renewal day",
     step: "03",
-    description: `When the bill drops, ${APP_NAME} takes your saved funds and makes the payment for you, saving you ${DEFAULT_CURRENCY} 60 every year.`,
+    description: `When the bill drops, ${APP_NAME} takes your saved funds and makes the payment, saving you ${DEFAULT_CURRENCY} 60 every year. For just for one subscription`,
     color: "text-emerald-400",
     bg: "bg-emerald-500/10",
   },
@@ -51,9 +51,16 @@ const trustPoints = [
 ]
 
 const pricingPoints = [
-  "Unlimited tracked subscriptions",
+  "Up to 10 tracked subscriptions",
   "Weekly, monthly, and quarterly installment planning",
   "Renewal readiness and funding progress",
+]
+
+const proPricingPoints = [
+  "Up to 50 tracked subscriptions",
+  "Link notifications to a Telegram, Whatsapp, Viber, etc.",
+  "View trends, predictions and get advice from the system",
+
 ]
 
 const faqs = [
@@ -200,7 +207,7 @@ export function LandingPage({ mvpSignupCount }: LandingPageProps) {
       <section id="pricing" className="relative overflow-hidden px-6 py-24">
         <div className="finance-grid absolute inset-0" aria-hidden="true" />
         <div className="section-grid-vignette absolute inset-0" aria-hidden="true" />
-        <div className="relative z-10 mx-auto max-w-4xl">
+        <div className="relative z-10 mx-auto max-w-6xl">
           <Reveal className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">Pricing</p>
             <h2 className="text-4xl font-bold tracking-tight text-white mb-4">
@@ -211,40 +218,91 @@ export function LandingPage({ mvpSignupCount }: LandingPageProps) {
             </p>
           </Reveal>
 
-          <Reveal delayMs={140}>
-            <SpotlightCard className="p-8 md:p-10">
-              <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-                <div>
-                  <h3 className="text-3xl font-bold text-white">Free plan</h3>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    For individuals validating their annual subscription budget.
-                  </p>
-                  <ul className="mt-6 space-y-3">
-                    {pricingPoints.map((point) => (
-                      <li key={point} className="flex items-center gap-3 text-sm text-muted-foreground">
-                        <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
+            <Reveal delayMs={140}>
+              <SpotlightCard className="h-full p-8 md:p-10">
+                <div className="flex h-full flex-col">
+                  <div className="flex-1">
+                    <div className="min-h-[96px]">
+                      <h3 className="text-3xl font-bold text-white">Free plan</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        For individuals validating their annual subscription budget.
+                      </p>
+                    </div>
+                    <ul className="mt-6 min-h-[132px] space-y-3">
+                      {pricingPoints.map((point) => (
+                        <li key={point} className="flex items-center gap-3 text-sm text-muted-foreground">
+                          <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-8">
+                    <p className="text-3xl font-extrabold text-white">{DEFAULT_CURRENCY} 0</p>
+                    <div className="mt-1 flex h-[135px] flex-col items-start">
+                      <p className="min-h-[48px] text-xs text-muted-foreground">No paid subscription for the MVP. Money movement turns on only when the regulated wallet and issuing stack is ready.</p>
+                      <Link
+                        href="/register?next=/dashboard"
+                        className={cn(
+                          buttonVariants(),
+                          "animated-primary-link mt-6 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/30"
+                        )}
+                      >
+                        Start planning
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="md:text-right">
-                  <p className="text-3xl font-extrabold text-white">{DEFAULT_CURRENCY} 0</p>
-                  <p className="mt-1 text-xs text-muted-foreground">No paid subscription for the MVP. Money movement turns on only when the regulated wallet and issuing stack is ready.</p>
-                  <Link
-                    href="/register?next=/dashboard"
-                    className={cn(
-                      buttonVariants(),
-                      "animated-primary-link mt-6 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/30"
-                    )}
-                  >
-                    Start planning
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+              </SpotlightCard>
+            </Reveal>
+
+            <Reveal delayMs={220}>
+              <SpotlightCard className="h-full bg-primary/8 p-8 shadow-2xl shadow-chart-2/20 md:p-10">
+                <div className="flex h-full flex-col">
+                  {/* <div className="mb-5 inline-flex w-fit rounded-full border border-primary/30 bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+                    Paid plan
+                  </div> */}
+                  <div className="flex-1">
+                    <div className="min-h-[96px]">
+                      <h3 className="text-3xl font-bold text-white">Pro</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        For people and organizations willing to save on their large subscriptions.
+                      </p>
+                    </div>
+                    <ul className="mt-6 min-h-[132px] space-y-3">
+                      {proPricingPoints.map((point) => (
+                        <li key={point} className="flex items-center gap-3 text-sm text-foreground">
+                          <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-8">
+                    <div className="flex items-end gap-2">
+                      <p className="text-3xl font-extrabold text-white">{DEFAULT_CURRENCY} 5</p>
+                      <p className="pb-1 text-xs font-medium uppercase tracking-widest text-muted-foreground">/ month</p>
+                    </div>
+                    <div className="mt-1 flex h-[135px] flex-col items-start">
+                      <p className="min-h-[48px] text-xs text-muted-foreground">No paid subscription for the MVP. Money movement turns on only when the regulated wallet and issuing stack is ready.</p>
+                      <Link
+                        href="/register?next=/dashboard"
+                        className={cn(
+                          buttonVariants(),
+                          "animated-primary-link mt-6 bg-white text-slate-950 shadow-xl shadow-primary/25 hover:bg-white/90"
+                        )}
+                      >
+                        Join Pro waitlist
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </SpotlightCard>
-          </Reveal>
+              </SpotlightCard>
+            </Reveal>
+          </div>
         </div>
       </section>
 
