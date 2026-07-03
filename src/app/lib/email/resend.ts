@@ -20,7 +20,7 @@ function getMvpWelcomeTemplate() {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
-    <title>PaySplit MVP access confirmed</title>
+    <title>Thank you for subscribing to test PaySplit</title>
   </head>
   <body style="margin:0;background:#061013;color:#f8fafc;font-family:Arial,Helvetica,sans-serif;">
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#061013;padding:32px 16px;">
@@ -34,22 +34,12 @@ function getMvpWelcomeTemplate() {
             </tr>
             <tr>
               <td style="padding:40px 36px 28px;">
-                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td>
-                      <div style="display:inline-block;border-radius:999px;background:rgba(20,184,166,0.12);padding:10px 14px;color:#5eead4;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">
-                        MVP access confirmed
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-
-                <h1 style="margin:24px 0 12px;color:#ffffff;font-size:34px;line-height:1.08;font-weight:800;letter-spacing:0;">
-                  You're on the PaySplit tester list.
+                <h1 style="margin:0 0 12px;color:#ffffff;font-size:34px;line-height:1.08;font-weight:800;letter-spacing:0;">
+                  Thank you for subscribing to test PaySplit
                 </h1>
 
                 <p style="margin:0;color:#a8b7bd;font-size:16px;line-height:1.7;">
-                  Thanks for subscribing to PaySplit notifications. We'll let you know when MVP testing opens and send only product access updates related to early testing.
+                  We'll let you know when MVP testing opens and send only product access updates related to early testing.
                 </p>
 
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:30px 0;border-collapse:separate;border-spacing:0;">
@@ -59,7 +49,7 @@ function getMvpWelcomeTemplate() {
                         What happens next
                       </p>
                       <p style="margin:0;color:#dbeafe;font-size:15px;line-height:1.65;">
-                        We'll invite a small group first, collect feedback, and use it to shape the subscription payment experience before public launch.
+                        We'll invite a small group first, collect feedback, and use it to shape the experience before public launch.
                       </p>
                     </td>
                   </tr>
